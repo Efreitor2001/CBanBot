@@ -11,14 +11,12 @@ public class DataAccess
 {
     private static string _databasePath;
 
-    // Статический конструктор для инициализации пути к БД
     static DataAccess()
     {
         try
         {
             Console.WriteLine("[INFO] Инициализация пути к базе данных...");
             
-            // Загрузка .env файла
             if (File.Exists(".env"))
             {
                 Env.Load();
