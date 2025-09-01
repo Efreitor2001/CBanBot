@@ -8,7 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a6a540a-6751-4d8b-b395-049fa5f5aad3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/.idea.CBot/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/.idea.CBot/.idea/encodings.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/.idea.CBot/.idea/indexLayout.xml" afterDir="false" />
@@ -16,8 +15,9 @@
       <change afterPath="$PROJECT_DIR$/CBot.sln" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/CBot/.env" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/CBot/CBot.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CBot/DataAccess.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/CBot/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CBot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CBot/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CBot/DataAccess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CBot/DataAccess.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -96,7 +96,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756738658929</updated>
-      <workItem from="1756738663551" duration="556000" />
+      <workItem from="1756738663551" duration="1640000" />
     </task>
     <servers />
   </component>

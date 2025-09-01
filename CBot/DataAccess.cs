@@ -30,20 +30,17 @@ public class DataAccess
             string? dbName = Environment.GetEnvironmentVariable("DATABASE") ?? "bot.db";
             Console.WriteLine($"[INFO] Имя базы данных: {dbName}");
             
-            // Получение пути к папке данных приложения
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string appFolder = Path.Combine(appDataPath, "CBot");
             
             Console.WriteLine($"[INFO] Папка приложения: {appFolder}");
             
-            // Создание папки приложения, если она не существует
             if (!Directory.Exists(appFolder))
             {
                 Directory.CreateDirectory(appFolder);
                 Console.WriteLine($"[INFO] Папка приложения создана: {appFolder}");
             }
             
-            // Полный путь к базе данных
             _databasePath = Path.Combine(appFolder, dbName);
             Console.WriteLine($"[INFO] Полный путь к БД: {_databasePath}");
         }
@@ -54,7 +51,6 @@ public class DataAccess
         }
     }
 
-    // Метод для получения подключения к БД
     private static SqliteConnection GetConnection()
     {
         return new SqliteConnection($"Filename={_databasePath}");
@@ -66,7 +62,6 @@ public class DataAccess
         
         try
         {
-            // Создание файла базы данных, если он не существует
             if (!File.Exists(_databasePath))
             {
                 File.Create(_databasePath).Close();
@@ -82,8 +77,7 @@ public class DataAccess
                 Console.WriteLine("[INFO] Подключение к базе данных...");
                 await db.OpenAsync();
                 Console.WriteLine("[INFO] Подключение к базе данных установлено");
-
-                // Создание таблицы chatSettings
+                
                 string tableCommand = @"
                     CREATE TABLE IF NOT EXISTS chatSettings (
                         chat_id INTEGER PRIMARY KEY NOT NULL,
@@ -96,8 +90,6 @@ public class DataAccess
                 var createTable = new SqliteCommand(tableCommand, db);
                 await createTable.ExecuteNonQueryAsync();
                 Console.WriteLine("[INFO] Таблица chatSettings создана или уже существует");
-                
-                // Можно добавить создание других таблиц здесь
             }
             
             Console.WriteLine("[INFO] Инициализация базы данных завершена успешно");
@@ -108,8 +100,6 @@ public class DataAccess
             throw;
         }
     }
-    
-    // Методы для работы с таблицей chatSettings
     public static async Task AddOrUpdateChatSettings(long chatId, int deleteMessage = 0, 
         int muteMinutes = 0, int voteMuteLimit = 0, int voteBanLimit = 0)
     {
@@ -124,7 +114,6 @@ public class DataAccess
                 var command = new SqliteCommand();
                 command.Connection = db;
                 
-                // Используем INSERT OR REPLACE для обновления существующих записей
                 command.CommandText = @"
                     INSERT OR REPLACE INTO chatSettings 
                     (chat_id, delete_message, mute_minutes, vote_mute_limit, vote_ban_limit)
@@ -179,7 +168,6 @@ public class DataAccess
                     }
                 }
                 
-                // Если запись не найдена, возвращаем настройки по умолчанию
                 Console.WriteLine($"[INFO] Настройки для чата {chatId} не найдены, возвращаются значения по умолчанию");
                 return new Dictionary<string, object>
                 {
@@ -198,7 +186,6 @@ public class DataAccess
         }
     }
     
-    // Дополнительный метод для получения всех настроек (для отладки)
     public static async Task<List<Dictionary<string, object>>> GetAllChatSettings()
     {
         Console.WriteLine("[INFO] Получение всех настроек чатов");
